@@ -6,16 +6,19 @@ import { cn, formatPrice, formatRating } from "@/lib/format";
 import type { Listing } from "@/lib/types";
 
 /**
- * Tarjeta de alojamiento del feed de la Home: carrusel de imágenes,
- * corazón de favoritos, insignia, ubicación, fechas, precio y valoración.
+ * Tarjeta de alojamiento: carrusel de fotos (con placeholder mientras
+ * cargan), corazón de favoritos, insignia, título, ubicación, fechas,
+ * precio por noche y valoración con estrella.
  */
 export default function ListingCard({
   listing,
   priority = false,
+  sizes,
   className,
 }: {
   listing: Listing;
   priority?: boolean;
+  sizes?: string;
   className?: string;
 }) {
   const hasDiscount =
@@ -30,6 +33,7 @@ export default function ListingCard({
             images={listing.images}
             alt={`${listing.title} en ${listing.location}`}
             priority={priority}
+            sizes={sizes}
             className="aspect-square w-full"
           />
 
@@ -51,9 +55,12 @@ export default function ListingCard({
             <h3 className="text-foreground truncate text-[15px] font-semibold">
               {listing.title}
             </h3>
-            <span className="text-foreground flex shrink-0 items-center gap-1 text-[13px]">
-              <Icon name="star" size={12} />
-              {formatRating(listing.rating)}
+            <span
+              className="text-foreground flex shrink-0 items-center gap-1 text-[13px]"
+              aria-label={`Valoración: ${formatRating(listing.rating)} sobre 5, ${listing.reviewsCount} reseñas`}
+            >
+              <Icon name="star" size={12} aria-hidden="true" />
+              <span aria-hidden="true">{formatRating(listing.rating)}</span>
             </span>
           </div>
 

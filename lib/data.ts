@@ -1,4 +1,4 @@
-import type { Category, Listing, ListingSection } from "./types";
+import type { Category, Listing } from "./types";
 
 /** Construye una URL de Unsplash con los parámetros de recorte que usamos. */
 const img = (id: string, w = 900) =>
@@ -12,9 +12,13 @@ const avatar = (n: number) => `https://i.pravatar.cc/160?img=${n}`;
 
 export const categories: Category[] = [
   { id: "todo", label: "Todo", icon: "compass" },
-  { id: "alojamientos", label: "Alojamientos", icon: "house" },
-  { id: "experiencias", label: "Experiencias", icon: "balloon" },
-  { id: "servicios", label: "Servicios", icon: "bell" },
+  { id: "playa", label: "Playa", icon: "waves" },
+  { id: "mansiones", label: "Mansiones", icon: "mansion" },
+  { id: "tendencias", label: "Tendencias", icon: "flame" },
+  { id: "cabanas", label: "Cabañas", icon: "cabin" },
+  { id: "piscinas", label: "Piscinas", icon: "pool" },
+  { id: "islas", label: "Islas", icon: "palm" },
+  { id: "vistas", label: "Vistas", icon: "mountain" },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -26,6 +30,7 @@ export const listings: Listing[] = [
     id: "ronda-cueva",
     title: "Cueva en Ronda",
     location: "Ronda, Málaga",
+    category: "vistas",
     images: [
       img("1566073771259-6a8506099945"),
       img("1522708323590-d24dbb6b0267"),
@@ -56,6 +61,7 @@ export const listings: Listing[] = [
     id: "cadaques-mar",
     title: "Casa frente al mar",
     location: "Cadaqués, Girona",
+    category: "playa",
     images: [
       img("1512917774080-9991f1c4c750"),
       img("1600585154340-be6161a56a0c"),
@@ -83,6 +89,7 @@ export const listings: Listing[] = [
     id: "pirineos-cabana",
     title: "Cabaña en los Pirineos",
     location: "Bielsa, Huesca",
+    category: "cabanas",
     images: [
       img("1470770841072-f978cf4d019e"),
       img("1499793983690-e29da59ef1c2"),
@@ -112,6 +119,7 @@ export const listings: Listing[] = [
     id: "madrid-atico",
     title: "Ático en Malasaña",
     location: "Madrid, Comunidad de Madrid",
+    category: "tendencias",
     images: [
       img("1502672260266-1c1ef2d93688"),
       img("1493809842364-78817add7ffb"),
@@ -139,6 +147,7 @@ export const listings: Listing[] = [
     id: "ibiza-villa",
     title: "Villa con piscina",
     location: "Santa Eulalia, Ibiza",
+    category: "piscinas",
     images: [
       img("1582719478250-c89cae4dc85b"),
       img("1600596542815-ffad4c1539a9"),
@@ -169,6 +178,7 @@ export const listings: Listing[] = [
     id: "granada-carmen",
     title: "Carmen con vistas a la Alhambra",
     location: "Granada, Andalucía",
+    category: "vistas",
     images: [
       img("1554995207-c18c203602cb"),
       img("1600047509807-ba8f99d2cdde"),
@@ -196,6 +206,7 @@ export const listings: Listing[] = [
     id: "lisboa-loft",
     title: "Loft en Alfama",
     location: "Lisboa, Portugal",
+    category: "tendencias",
     images: [
       img("1560185007-cde436f6a4d0"),
       img("1502005229762-cf1b2da7c5d6"),
@@ -223,6 +234,7 @@ export const listings: Listing[] = [
     id: "porto-casa",
     title: "Casa de azulejos",
     location: "Oporto, Portugal",
+    category: "mansiones",
     images: [
       img("1518780664697-55e3ad937233"),
       img("1600566753151-384129cf4e3e"),
@@ -248,9 +260,10 @@ export const listings: Listing[] = [
     availability: "6 – 11 de nov",
   },
   {
-    id: "asturias-hórreo",
+    id: "asturias-horreo",
     title: "Hórreo restaurado",
     location: "Cangas de Onís, Asturias",
+    category: "cabanas",
     images: [
       img("1449824913935-59a10b8d2000"),
       img("1571896349842-33c89424de2d"),
@@ -279,6 +292,7 @@ export const listings: Listing[] = [
     id: "valencia-playa",
     title: "Apartamento en la Malvarrosa",
     location: "Valencia, Comunidad Valenciana",
+    category: "playa",
     images: [
       img("1502672023488-70e25813eb80"),
       img("1560448075-bb4caa6c3d38"),
@@ -306,6 +320,7 @@ export const listings: Listing[] = [
     id: "tenerife-domo",
     title: "Domo geodésico",
     location: "Vilaflor, Tenerife",
+    category: "islas",
     images: [
       img("1517824806704-9040b037703b"),
       img("1533105079780-92b9be482077"),
@@ -335,6 +350,7 @@ export const listings: Listing[] = [
     id: "sevilla-patio",
     title: "Casa con patio andaluz",
     location: "Sevilla, Andalucía",
+    category: "mansiones",
     images: [
       img("1600210492486-724fe5c67fb0"),
       img("1600607688969-a5bfcd646154"),
@@ -358,6 +374,64 @@ export const listings: Listing[] = [
     amenities: ["Patio", "Wifi", "Aire acondicionado", "Cocina"],
     availability: "11 – 16 de nov",
   },
+  {
+    id: "mallorca-finca",
+    title: "Finca con piscina infinita",
+    location: "Sóller, Mallorca",
+    category: "piscinas",
+    images: [
+      img("1613490493576-7fde63acd811"),
+      img("1615874959474-d609969a20ed"),
+      img("1580587771525-78b9dba3b914"),
+    ],
+    pricePerNight: 372,
+    originalPricePerNight: 429,
+    currency: "EUR",
+    rating: 4.95,
+    reviewsCount: 112,
+    badge: "Favorito entre huéspedes",
+    isGuestFavorite: true,
+    host: {
+      id: "h-tomeu",
+      name: "Tomeu",
+      avatarUrl: avatar(51),
+      yearsHosting: 10,
+      isSuperhost: true,
+    },
+    beds: 5,
+    bedrooms: 4,
+    bathrooms: 3,
+    amenities: ["Piscina infinita", "Wifi", "Olivar privado", "Barbacoa"],
+    availability: "16 – 21 de sep",
+  },
+  {
+    id: "lanzarote-jameo",
+    title: "Casa volcánica",
+    location: "Haría, Lanzarote",
+    category: "islas",
+    images: [
+      img("1571055107559-3e67626fa8be"),
+      img("1600585152220-90363fe7e115"),
+      img("1600121848594-d8644e57abab"),
+    ],
+    pricePerNight: 189,
+    currency: "EUR",
+    rating: 4.9,
+    reviewsCount: 143,
+    isGuestFavorite: false,
+    host: {
+      id: "h-yaiza",
+      name: "Yaiza",
+      avatarUrl: avatar(38),
+      yearsHosting: 4,
+      isSuperhost: true,
+    },
+    beds: 3,
+    bedrooms: 2,
+    bathrooms: 2,
+    amenities: ["Wifi", "Terraza", "Vistas al volcán", "Parking gratuito"],
+    availability: "4 – 9 de nov",
+  },
 ];
 
 /** Índice por id para búsquedas rápidas. */
@@ -368,43 +442,8 @@ export const listingsById: Record<string, Listing> = Object.fromEntries(
 export const getListing = (id: string): Listing | undefined => listingsById[id];
 
 /* -------------------------------------------------------------------------- */
-/* Secciones de la Home                                                        */
+/* Carga simulada                                                              */
 /* -------------------------------------------------------------------------- */
 
-export const homeSections: ListingSection[] = [
-  {
-    id: "populares-malaga",
-    title: "Populares cerca de Málaga",
-    href: "/search?location=Malaga",
-    listingIds: ["ronda-cueva", "granada-carmen", "sevilla-patio", "ibiza-villa"],
-  },
-  {
-    id: "escapadas-fin-semana",
-    title: "Disponibles este fin de semana",
-    href: "/search?when=weekend",
-    listingIds: [
-      "valencia-playa",
-      "madrid-atico",
-      "lisboa-loft",
-      "cadaques-mar",
-    ],
-  },
-  {
-    id: "naturaleza",
-    title: "Alojamientos en plena naturaleza",
-    href: "/search?category=naturaleza",
-    listingIds: [
-      "pirineos-cabana",
-      "asturias-hórreo",
-      "tenerife-domo",
-      "porto-casa",
-    ],
-  },
-];
-
-/** Devuelve los alojamientos de una sección, en orden. */
-export function getSectionListings(section: ListingSection): Listing[] {
-  return section.listingIds
-    .map((id) => listingsById[id])
-    .filter((l): l is Listing => Boolean(l));
-}
+/** Retardo (ms) que finge la latencia de una API en el `useEffect` inicial. */
+export const FAKE_FETCH_DELAY = 1000;

@@ -3,7 +3,15 @@
  * Todo es local (mock): no hay backend ni fetch remoto.
  */
 
-export type CategoryId = "todo" | "alojamientos" | "experiencias" | "servicios";
+export type CategoryId =
+  | "todo"
+  | "playa"
+  | "mansiones"
+  | "tendencias"
+  | "cabanas"
+  | "piscinas"
+  | "islas"
+  | "vistas";
 
 export interface Category {
   id: CategoryId;
@@ -14,6 +22,7 @@ export interface Category {
 
 export type IconName =
   | "search"
+  | "close"
   | "heart"
   | "heart-filled"
   | "user"
@@ -23,7 +32,14 @@ export type IconName =
   | "chevron-right"
   | "house"
   | "balloon"
-  | "bell";
+  | "bell"
+  | "waves"
+  | "mansion"
+  | "flame"
+  | "cabin"
+  | "pool"
+  | "palm"
+  | "mountain";
 
 export interface Host {
   id: string;
@@ -39,6 +55,8 @@ export interface Listing {
   /** Título corto que se muestra sobre la tarjeta (ej. "Cabaña en Ronda") */
   title: string;
   location: string;
+  /** Categoría a la que pertenece, usada por la fila de filtros */
+  category: Exclude<CategoryId, "todo">;
   /** URLs de las fotos del carrusel (mínimo 1) */
   images: string[];
   pricePerNight: number;

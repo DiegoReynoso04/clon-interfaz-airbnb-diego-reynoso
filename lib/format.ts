@@ -15,6 +15,17 @@ export function formatRating(rating: number): string {
   }).format(rating);
 }
 
+/**
+ * Normaliza texto para buscar: minúsculas y sin tildes, de modo que
+ * "malaga" encuentre "Málaga".
+ */
+export function normalize(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
 /** Une clases condicionales sin dependencias externas (sustituto de clsx). */
 export function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");

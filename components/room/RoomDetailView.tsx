@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { DateRange } from "react-day-picker";
 import AmenitiesList from "./AmenitiesList";
+import Breadcrumb from "./Breadcrumb";
 import DetailHeaderNav from "./DetailHeaderNav";
 import HostCardFull from "./HostCardFull";
 import HostCardMini from "./HostCardMini";
@@ -99,7 +100,10 @@ export default function RoomDetailView({ id }: { id: string }) {
         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start lg:gap-12 lg:pt-8">
           {/* Columna de contenido */}
           <div className="space-y-8 px-5 pt-5 lg:px-0 lg:pt-0">
-            <RoomHeaderInfo listing={listing} />
+            <div className="space-y-3">
+              <Breadcrumb location={listing.location} />
+              <RoomHeaderInfo listing={listing} />
+            </div>
 
             <HostCardMini host={listing.host} />
 

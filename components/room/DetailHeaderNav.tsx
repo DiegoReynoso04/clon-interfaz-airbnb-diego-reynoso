@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useState } from "react";
 import Icon from "@/components/ui/Icon";
 import { cn } from "@/lib/format";
@@ -9,15 +9,20 @@ import { cn } from "@/lib/format";
  * Botones flotantes sobre la galería: volver, compartir y guardar.
  * Van en círculos blancos semitransparentes para que se lean encima de
  * cualquier foto, como en la app de Airbnb.
+ *
+ * El botón de volver es un `<Link>` al catálogo, no un `router.back()`:
+ * así el destino es siempre el mismo aunque se llegue a la ficha por un
+ * enlace directo, sin historial al que retroceder.
  */
 export default function DetailHeaderNav({
   listingTitle,
   defaultFavorite = false,
+  backHref = "/search",
 }: {
   listingTitle: string;
   defaultFavorite?: boolean;
+  backHref?: string;
 }) {
-  const router = useRouter();
   const [isFavorite, setIsFavorite] = useState(defaultFavorite);
   const [shared, setShared] = useState(false);
 
@@ -41,14 +46,13 @@ export default function DetailHeaderNav({
 
   return (
     <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-start justify-between p-3">
-      <button
-        type="button"
-        onClick={() => router.back()}
-        aria-label="Volver"
+      <Link
+        href={backHref}
+        aria-label="Volver al catálogo de alojamientos"
         className={cn(circle, "pointer-events-auto")}
       >
         <Icon name="chevron-left" size={18} strokeWidth={2.4} />
-      </button>
+      </Link>
 
       <div className="pointer-events-auto flex items-center gap-2">
         {shared && (

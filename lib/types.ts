@@ -42,7 +42,49 @@ export type IconName =
   | "mountain"
   | "sliders"
   | "map"
-  | "chevron-down";
+  | "chevron-down"
+  | "share"
+  | "minus"
+  | "plus"
+  | "check"
+  | "clock"
+  | "medal"
+  | "wifi"
+  | "kitchen"
+  | "snowflake"
+  | "washer"
+  | "car"
+  | "pet"
+  | "coffee"
+  | "tv"
+  | "tree"
+  | "sun"
+  | "bed";
+
+/** Una reseña de un huésped. */
+export interface Review {
+  id: string;
+  author: string;
+  avatarUrl: string;
+  date: string;
+  rating: number;
+  text: string;
+}
+
+/** Puntuación por categoría del bloque de reseñas. */
+export interface CategoryRating {
+  label: string;
+  value: number;
+}
+
+/** Estadísticas del anfitrión que muestra `HostCardFull`. */
+export interface HostStats {
+  reviews: number;
+  rating: number;
+  yearsHosting: number;
+  responseRate: number;
+  responseTime: string;
+}
 
 /** Criterios de ordenación del catálogo de resultados. */
 export type SortOrder = "recomendados" | "precio-asc" | "precio-desc";

@@ -26,6 +26,21 @@ export function normalize(text: string): string {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
+/** Formatea una fecha como "21 ago". */
+export function formatShortDate(date: Date): string {
+  return new Intl.DateTimeFormat("es-ES", {
+    day: "numeric",
+    month: "short",
+  }).format(date);
+}
+
+/** Nº de noches entre dos fechas (0 si falta alguna o el rango es inverso). */
+export function nightsBetween(from?: Date, to?: Date): number {
+  if (!from || !to) return 0;
+  const ms = to.getTime() - from.getTime();
+  return Math.max(0, Math.round(ms / 86_400_000));
+}
+
 /** Une clases condicionales sin dependencias externas (sustituto de clsx). */
 export function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");

@@ -25,6 +25,10 @@ const items: NavItem[] = [
 export default function BottomNav() {
   const pathname = usePathname();
 
+  // La ficha de habitación tiene su propia barra fija de reserva, así que
+  // ahí ocultamos la navegación inferior (igual que hace Airbnb).
+  if (pathname.startsWith("/rooms/")) return null;
+
   return (
     <nav
       aria-label="Navegación principal"

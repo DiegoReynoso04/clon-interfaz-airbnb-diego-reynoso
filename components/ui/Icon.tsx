@@ -122,6 +122,21 @@ const paths: Record<IconName, React.ReactNode> = {
       <circle cx="17" cy="5.5" r="2" />
     </>
   ),
+  sliders: (
+    <>
+      <path d="M3.5 7.5h4M11.5 7.5h9" />
+      <path d="M3.5 16.5h9M16.5 16.5h4" />
+      <circle cx="9.5" cy="7.5" r="2" />
+      <circle cx="14.5" cy="16.5" r="2" />
+    </>
+  ),
+  map: (
+    <>
+      <path d="M9 4.5 3.5 6.8v12.7L9 17.2l6 2.3 5.5-2.3V4.5L15 6.8 9 4.5Z" />
+      <path d="M9 4.5v12.7M15 6.8v12.7" />
+    </>
+  ),
+  "chevron-down": <path d="M5 9.5 12 16l7-6.5" />,
 };
 
 interface IconProps extends Omit<SVGProps<SVGSVGElement>, "name"> {

@@ -39,7 +39,30 @@ export type IconName =
   | "cabin"
   | "pool"
   | "palm"
-  | "mountain";
+  | "mountain"
+  | "sliders"
+  | "map"
+  | "chevron-down";
+
+/** Criterios de ordenación del catálogo de resultados. */
+export type SortOrder = "recomendados" | "precio-asc" | "precio-desc";
+
+/**
+ * Filtro rápido de la barra de chips. `match` es el texto (ya normalizado,
+ * sin tildes) que debe aparecer en alguna comodidad del alojamiento.
+ */
+export interface QuickFilter {
+  id: string;
+  label: string;
+  match: string;
+}
+
+/** Parámetros de la búsqueda activa que resume `SearchHeader`. */
+export interface SearchSummary {
+  destination: string;
+  dates: string;
+  guests: string;
+}
 
 export interface Host {
   id: string;

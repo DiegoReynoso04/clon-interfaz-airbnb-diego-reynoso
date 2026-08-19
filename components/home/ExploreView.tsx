@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import HomeHeader from "./HomeHeader";
 import ListingGrid from "@/components/listing/ListingGrid";
@@ -19,6 +20,7 @@ import type { CategoryId, Listing } from "@/lib/types";
  * así que la cuadrícula siempre refleja el estado actual.
  */
 export default function ExploreView() {
+  const router = useRouter();
   const [listings, setListings] = useState<Listing[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [query, setQuery] = useState("");
@@ -56,11 +58,18 @@ export default function ExploreView() {
     });
   }, [listings, query, category]);
 
+  // Enter en el buscador lleva al catálogo llevándose el texto escrito.
+  const handleSubmit = (value: string) => {
+    const term = value.trim();
+    router.push(term ? `/search?q=${encodeURIComponent(term)}` : "/search");
+  };
+
   return (
     <>
       <HomeHeader
         query={query}
         onQueryChange={setQuery}
+        onQuerySubmit={handleSubmit}
         category={category}
         onCategoryChange={setCategory}
         resultsCount={isLoading ? undefined : visibleListings.length}

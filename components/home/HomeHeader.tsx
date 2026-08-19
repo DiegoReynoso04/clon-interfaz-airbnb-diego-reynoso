@@ -12,12 +12,14 @@ import type { CategoryId } from "@/lib/types";
 export default function HomeHeader({
   query,
   onQueryChange,
+  onQuerySubmit,
   category,
   onCategoryChange,
   resultsCount,
 }: {
   query: string;
   onQueryChange: (value: string) => void;
+  onQuerySubmit?: (value: string) => void;
   category: CategoryId;
   onCategoryChange: (id: CategoryId) => void;
   resultsCount?: number;
@@ -29,6 +31,7 @@ export default function HomeHeader({
           <SearchBar
             value={query}
             onChange={onQueryChange}
+            onSubmit={onQuerySubmit}
             resultsCount={resultsCount}
           />
         </div>

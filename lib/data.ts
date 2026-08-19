@@ -1,4 +1,9 @@
-import type { Category, Listing } from "./types";
+import type {
+  Category,
+  Listing,
+  QuickFilter,
+  SearchSummary,
+} from "./types";
 
 /** Construye una URL de Unsplash con los parámetros de recorte que usamos. */
 const img = (id: string, w = 900) =>
@@ -447,3 +452,33 @@ export const getListing = (id: string): Listing | undefined => listingsById[id];
 
 /** Retardo (ms) que finge la latencia de una API en el `useEffect` inicial. */
 export const FAKE_FETCH_DELAY = 1000;
+
+/* -------------------------------------------------------------------------- */
+/* Catálogo de resultados (/search)                                            */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Búsqueda activa que resume la cabecera. Al no haber formulario de
+ * búsqueda real, es un valor fijo: cámbialo aquí y se refleja en la vista.
+ */
+export const searchSummary: SearchSummary = {
+  destination: "Alojamientos en España",
+  dates: "21 – 28 ago",
+  guests: "2 viajeros",
+};
+
+/**
+ * Filtros de conveniencia de la barra de chips. `match` se compara contra
+ * las comodidades del alojamiento ya normalizadas (minúsculas, sin tildes).
+ */
+export const quickFilters: QuickFilter[] = [
+  { id: "wifi", label: "Wifi", match: "wifi" },
+  { id: "lavadora", label: "Lavadora", match: "lavadora" },
+  { id: "mascotas", label: "Admite mascotas", match: "mascotas" },
+  { id: "piscina", label: "Piscina", match: "piscina" },
+  { id: "parking", label: "Parking gratuito", match: "parking" },
+  { id: "aire", label: "Aire acondicionado", match: "aire acondicionado" },
+  { id: "chimenea", label: "Chimenea", match: "chimenea" },
+  { id: "desayuno", label: "Desayuno", match: "desayuno" },
+  { id: "vistas", label: "Vistas", match: "vistas" },
+];

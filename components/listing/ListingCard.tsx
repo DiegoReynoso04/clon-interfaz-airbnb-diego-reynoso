@@ -34,7 +34,7 @@ export default function ListingCard({
             alt={`${listing.title} en ${listing.location}`}
             priority={priority}
             sizes={sizes}
-            className="aspect-square w-full"
+            className="aspect-square w-full rounded-xl"
           />
 
           {listing.badge && (

@@ -5,21 +5,34 @@ import Icon from "@/components/ui/Icon";
 /**
  * Campo de búsqueda controlado. No guarda estado propio: el texto vive en
  * `ExploreView`, que es quien filtra las tarjetas en cada pulsación.
+ *
+ * Va envuelto en un `<form>` para que Enter dispare `onSubmit` de forma
+ * nativa y para que el teclado del móvil muestre la tecla "Buscar".
  */
 export default function SearchBar({
   value,
   onChange,
+  onSubmit,
   resultsCount,
   placeholder = "Empieza a buscar",
 }: {
   value: string;
   onChange: (value: string) => void;
+  /** Se dispara al pulsar Enter. Si no se pasa, el formulario no hace nada. */
+  onSubmit?: (value: string) => void;
   /** Nº de resultados visibles, se anuncia a lectores de pantalla. */
   resultsCount?: number;
   placeholder?: string;
 }) {
   return (
-    <div className="relative">
+    <form
+      role="search"
+      onSubmit={(event) => {
+        event.preventDefault();
+        onSubmit?.(value);
+      }}
+      className="relative"
+    >
       <label htmlFor="buscador" className="sr-only">
         Buscar alojamientos por destino o título
       </label>
@@ -32,6 +45,7 @@ export default function SearchBar({
         id="buscador"
         type="search"
         inputMode="search"
+        enterKeyHint="search"
         autoComplete="off"
         value={value}
         onChange={(event) => onChange(event.target.value)}
@@ -56,6 +70,6 @@ export default function SearchBar({
           ? `${resultsCount} alojamientos encontrados`
           : ""}
       </p>
-    </div>
+    </form>
   );
 }

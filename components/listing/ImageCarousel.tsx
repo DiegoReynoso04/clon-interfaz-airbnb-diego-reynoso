@@ -42,7 +42,9 @@ export default function ImageCarousel({
     setStates((prev) => (prev[i] === state ? prev : { ...prev, [i]: state }));
 
   return (
-    <div className={cn("relative overflow-hidden rounded-xl", className)}>
+    // El redondeo lo decide quien lo usa: la Home lo quiere redondeado y la
+    // tarjeta del catálogo va a ras del borde de la tarjeta.
+    <div className={cn("relative overflow-hidden", className)}>
       <div
         ref={trackRef}
         onScroll={handleScroll}

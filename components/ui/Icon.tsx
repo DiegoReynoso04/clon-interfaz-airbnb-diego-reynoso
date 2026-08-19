@@ -236,6 +236,9 @@ const paths: Record<IconName, React.ReactNode> = {
       <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4" />
     </>
   ),
+  moon: (
+    <path d="M20 14.3A8.5 8.5 0 0 1 9.7 4a8.5 8.5 0 1 0 10.3 10.3Z" />
+  ),
   bed: (
     <>
       <path d="M3 19.5v-13" />

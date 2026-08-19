@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import Icon from "@/components/ui/Icon";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 import { cn } from "@/lib/format";
 
 /**
@@ -60,6 +61,8 @@ export default function DetailHeaderNav({
             Enlace copiado
           </span>
         )}
+
+        <ThemeToggle variant="overlay" />
 
         <button
           type="button"

@@ -2,6 +2,7 @@
 
 import CategoryFilterBar from "./CategoryFilterBar";
 import SearchBar from "./SearchBar";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 import { categories } from "@/lib/data";
 import type { CategoryId } from "@/lib/types";
 
@@ -27,13 +28,16 @@ export default function HomeHeader({
   return (
     <header className="border-border-soft bg-background sticky top-0 z-40 border-b">
       <div className="mx-auto max-w-7xl">
-        <div className="px-5 pt-3 pb-3">
-          <SearchBar
-            value={query}
-            onChange={onQueryChange}
-            onSubmit={onQuerySubmit}
-            resultsCount={resultsCount}
-          />
+        <div className="flex items-center gap-2 px-5 pt-3 pb-3">
+          <div className="min-w-0 flex-1">
+            <SearchBar
+              value={query}
+              onChange={onQueryChange}
+              onSubmit={onQuerySubmit}
+              resultsCount={resultsCount}
+            />
+          </div>
+          <ThemeToggle />
         </div>
         <CategoryFilterBar
           categories={categories}

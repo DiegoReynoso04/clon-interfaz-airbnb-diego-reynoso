@@ -59,6 +59,7 @@ export type IconName =
   | "tv"
   | "tree"
   | "sun"
+  | "moon"
   | "bed";
 
 /** Una reseña de un huésped. */
@@ -115,11 +116,19 @@ export interface Host {
   isSuperhost: boolean;
 }
 
+/** Coordenadas geográficas de un alojamiento. */
+export interface Coordinates {
+  lat: number;
+  lng: number;
+}
+
 export interface Listing {
   id: string;
   /** Título corto que se muestra sobre la tarjeta (ej. "Cabaña en Ronda") */
   title: string;
   location: string;
+  /** Punto aproximado que se pinta en el mapa. */
+  coordinates: Coordinates;
   /** Categoría a la que pertenece, usada por la fila de filtros */
   category: Exclude<CategoryId, "todo">;
   /** URLs de las fotos del carrusel (mínimo 1) */

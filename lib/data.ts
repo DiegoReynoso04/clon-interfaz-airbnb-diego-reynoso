@@ -35,6 +35,7 @@ export const listings: Listing[] = [
     id: "ronda-cueva",
     title: "Cueva en Ronda",
     location: "Ronda, Málaga",
+    coordinates: { lat: 36.7429, lng: -5.1665 },
     category: "vistas",
     images: [
       img("1566073771259-6a8506099945"),
@@ -66,6 +67,7 @@ export const listings: Listing[] = [
     id: "cadaques-mar",
     title: "Casa frente al mar",
     location: "Cadaqués, Girona",
+    coordinates: { lat: 42.2887, lng: 3.2779 },
     category: "playa",
     images: [
       img("1512917774080-9991f1c4c750"),
@@ -94,6 +96,7 @@ export const listings: Listing[] = [
     id: "pirineos-cabana",
     title: "Cabaña en los Pirineos",
     location: "Bielsa, Huesca",
+    coordinates: { lat: 42.6335, lng: 0.2172 },
     category: "cabanas",
     images: [
       img("1470770841072-f978cf4d019e"),
@@ -124,6 +127,7 @@ export const listings: Listing[] = [
     id: "madrid-atico",
     title: "Ático en Malasaña",
     location: "Madrid, Comunidad de Madrid",
+    coordinates: { lat: 40.426, lng: -3.7038 },
     category: "tendencias",
     images: [
       img("1502672260266-1c1ef2d93688"),
@@ -152,6 +156,7 @@ export const listings: Listing[] = [
     id: "ibiza-villa",
     title: "Villa con piscina",
     location: "Santa Eulalia, Ibiza",
+    coordinates: { lat: 38.9847, lng: 1.535 },
     category: "piscinas",
     images: [
       img("1582719478250-c89cae4dc85b"),
@@ -183,6 +188,7 @@ export const listings: Listing[] = [
     id: "granada-carmen",
     title: "Carmen con vistas a la Alhambra",
     location: "Granada, Andalucía",
+    coordinates: { lat: 37.181, lng: -3.592 },
     category: "vistas",
     images: [
       img("1554995207-c18c203602cb"),
@@ -211,6 +217,7 @@ export const listings: Listing[] = [
     id: "lisboa-loft",
     title: "Loft en Alfama",
     location: "Lisboa, Portugal",
+    coordinates: { lat: 38.7139, lng: -9.13 },
     category: "tendencias",
     images: [
       img("1560185007-cde436f6a4d0"),
@@ -239,6 +246,7 @@ export const listings: Listing[] = [
     id: "porto-casa",
     title: "Casa de azulejos",
     location: "Oporto, Portugal",
+    coordinates: { lat: 41.145, lng: -8.6108 },
     category: "mansiones",
     images: [
       img("1518780664697-55e3ad937233"),
@@ -268,6 +276,7 @@ export const listings: Listing[] = [
     id: "asturias-horreo",
     title: "Hórreo restaurado",
     location: "Cangas de Onís, Asturias",
+    coordinates: { lat: 43.351, lng: -5.13 },
     category: "cabanas",
     images: [
       img("1449824913935-59a10b8d2000"),
@@ -297,6 +306,7 @@ export const listings: Listing[] = [
     id: "valencia-playa",
     title: "Apartamento en la Malvarrosa",
     location: "Valencia, Comunidad Valenciana",
+    coordinates: { lat: 39.475, lng: -0.326 },
     category: "playa",
     images: [
       img("1502672023488-70e25813eb80"),
@@ -325,6 +335,7 @@ export const listings: Listing[] = [
     id: "tenerife-domo",
     title: "Domo geodésico",
     location: "Vilaflor, Tenerife",
+    coordinates: { lat: 28.158, lng: -16.636 },
     category: "islas",
     images: [
       img("1517824806704-9040b037703b"),
@@ -355,6 +366,7 @@ export const listings: Listing[] = [
     id: "sevilla-patio",
     title: "Casa con patio andaluz",
     location: "Sevilla, Andalucía",
+    coordinates: { lat: 37.386, lng: -5.99 },
     category: "mansiones",
     images: [
       img("1600210492486-724fe5c67fb0"),
@@ -383,6 +395,7 @@ export const listings: Listing[] = [
     id: "mallorca-finca",
     title: "Finca con piscina infinita",
     location: "Sóller, Mallorca",
+    coordinates: { lat: 39.766, lng: 2.715 },
     category: "piscinas",
     images: [
       img("1613490493576-7fde63acd811"),
@@ -413,6 +426,7 @@ export const listings: Listing[] = [
     id: "lanzarote-jameo",
     title: "Casa volcánica",
     location: "Haría, Lanzarote",
+    coordinates: { lat: 29.145, lng: -13.498 },
     category: "islas",
     images: [
       img("1571055107559-3e67626fa8be"),

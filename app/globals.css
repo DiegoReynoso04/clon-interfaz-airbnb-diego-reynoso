@@ -1,10 +1,21 @@
 @import "tailwindcss";
 
+/*
+ * El tema lo decide el atributo `data-theme` del <html>, que escribe un
+ * script en línea antes del primer pintado (ver `lib/theme.ts`). Por eso
+ * la variante `dark:` de Tailwind deja de mirar `prefers-color-scheme`:
+ * si siguiera haciéndolo, el botón de cambiar tema no afectaría a las
+ * clases `dark:*` de los componentes.
+ */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 /* ==========================================================================
    Design tokens — Airbnb-like palette (Mobile First)
    ========================================================================== */
 
 :root {
+  color-scheme: light;
+
   /* Superficies */
   --background: #ffffff;
   --surface: #ffffff;
@@ -30,27 +41,27 @@
   --scrim: rgba(0, 0, 0, 0.45);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f0f0f;
-    --surface: #181818;
-    --surface-muted: #222222;
+:root[data-theme="dark"] {
+  color-scheme: dark;
 
-    --foreground: #f4f4f4;
-    --muted: #a8a8a8;
-    --subtle: #737373;
+  --background: #0f0f0f;
+  --surface: #181818;
+  --surface-muted: #222222;
 
-    --border: #333333;
-    --border-soft: #262626;
+  --foreground: #f4f4f4;
+  --muted: #a8a8a8;
+  --subtle: #737373;
 
-    --rausch: #ff5a76;
-    --rausch-dark: #ff385c;
-    --babu: #2ad4c6;
-    --arches: #ff8a5c;
+  --border: #333333;
+  --border-soft: #262626;
 
-    --on-image: #ffffff;
-    --scrim: rgba(0, 0, 0, 0.55);
-  }
+  --rausch: #ff5a76;
+  --rausch-dark: #ff385c;
+  --babu: #2ad4c6;
+  --arches: #ff8a5c;
+
+  --on-image: #ffffff;
+  --scrim: rgba(0, 0, 0, 0.55);
 }
 
 @theme inline {
@@ -111,4 +122,47 @@ body {
 /* Respeta el area segura de iOS en la barra inferior */
 @utility pb-safe {
   padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ==========================================================================
+   Leaflet: integracion con los tokens del proyecto
+   ========================================================================== */
+
+/* Los pines de precio son HTML propio: quitamos la caja por defecto. */
+.leaflet-div-icon.airbnb-price-pin {
+  background: transparent;
+  border: 0;
+}
+
+/* El contenedor del mapa hereda el fondo del tema mientras cargan los tiles */
+.leaflet-container {
+  background: var(--surface-muted);
+  font-family: inherit;
+}
+
+/* Controles y popups con el mismo lenguaje visual que el resto de la UI */
+.leaflet-bar a,
+.leaflet-control-attribution {
+  background: var(--surface);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+.leaflet-control-attribution a {
+  color: var(--muted);
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #ffffff;
+  border-radius: 0.75rem;
+}
+
+.leaflet-popup-content {
+  margin: 0.75rem;
+}
+
+/* En modo oscuro invertimos los tiles: OpenStreetMap solo los sirve claros */
+[data-theme="dark"] .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.9);
 }

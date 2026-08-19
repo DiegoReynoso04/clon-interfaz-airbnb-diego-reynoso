@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Icon from "@/components/ui/Icon";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 import type { SearchSummary } from "@/lib/types";
 
 /**
@@ -34,6 +35,8 @@ export default function SearchHeader({
           {summary.dates} · {summary.guests}
         </p>
       </div>
+
+      <ThemeToggle />
 
       <button
         type="button"

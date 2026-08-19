@@ -4,8 +4,8 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import FilterChips from "./FilterChips";
 import MapFloatingButton from "./MapFloatingButton";
-import MapPlaceholder from "./MapPlaceholder";
 import ResultsToolbar from "./ResultsToolbar";
+import MapView from "@/components/map/MapView";
 import SearchHeader from "./SearchHeader";
 import ListingCardDetailed from "@/components/listing/ListingCardDetailed";
 import ListingCardSkeleton from "@/components/listing/ListingCardSkeleton";
@@ -166,7 +166,7 @@ export default function SearchResultsView() {
             ref={mapRef}
             className="scroll-mt-32 px-4 pt-8 lg:sticky lg:top-32 lg:h-[calc(100vh-11rem)] lg:px-0 lg:pt-0"
           >
-            <MapPlaceholder
+            <MapView
               listings={visibleListings}
               className="h-72 w-full lg:h-full"
             />
